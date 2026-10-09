@@ -88,10 +88,4 @@ initialTodos.forEach((item) => {
 
 const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
 newTodoValidator.enableValidation();
-
-addTodoForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  handleSubmitForm();
-  newTodoValidator.resetValidation();
-  closePopup();
-});
+newTodoValidator.resetValidation();

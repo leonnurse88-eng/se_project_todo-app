@@ -4,7 +4,7 @@ class Todo {
     this.templateElement = document.querySelector(selector);
   }
 
-  generatedueDateEl() {
+  generateDueDateEl() {
     this.todoDate = this.todoElement.querySelector(".todo__date");
     const dueDate = new Date(this._data.date);
 
@@ -29,9 +29,10 @@ class Todo {
 
   generateCheckboxEl() {
     this.checkboxEl = this.todoElement.querySelector(".todo__completed");
-    this.todolabel = this.todoElement.querySelector(".todo__label");
+    this.todoLabel = this.todoElement.querySelector(".todo__label");
     this.checkboxEl.checked = this._data.completed;
     this.checkboxEl.id = `todo-${this._data.id}`;
+    this.todoLabel.setAttribute("for", this.checkboxEl.id);
     return this.checkboxEl;
   }
 
@@ -45,7 +46,7 @@ class Todo {
 
     todoNameEl.textContent = this._data.name;
 
-    this.generatedueDateEl();
+    this.generateDueDateEl();
     this.generateCheckboxEl();
     this._setEventListeners();
 
