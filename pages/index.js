@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 import { initialTodos, validationConfig } from "../utils/contants.js";
-import todo from "../components/todo.js";
+import todo from "../components/Todo.js";
 import FormValidator from "../components/FormValidator.js";
-import Section from "../components/section.js";
+import Section from "../components/Section.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import TodoCounter from "../components/TodoCounter.js";
 
@@ -22,6 +22,7 @@ function handleDelete(completed) {
   if (completed) {
     todoCounter.updateCompleted(false);
   }
+  todoCounter.updateTotal(false);
 }
 
 const addTodoPopupInstance = new PopupWithForm(
@@ -33,6 +34,7 @@ const addTodoPopupInstance = new PopupWithForm(
     const values = { ...inputValues, date, id: uuidv4() };
     const todoElement = generateTodo(values);
     todosList.prepend(todoElement);
+    todoCounter.updateTotal(true);
     newTodoValidator.resetValidation();
     addTodoPopupInstance.close();
   },
