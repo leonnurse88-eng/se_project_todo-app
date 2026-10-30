@@ -3,14 +3,12 @@ import { initialTodos, validationConfig } from "../utils/contants.js";
 import Todo from "../components/Todo.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
-import Popup from "../components/Popup.js";
 import TodoCounter from "../components/TodoCounter.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopup = document.querySelector("#add-todo-popup");
 const addTodoForm = addTodoPopup.querySelector(".popup__form");
-// const todoTemplate = document.querySelector("#todo-template");=> remove ltr
 const todosList = document.querySelector(".todos__list");
 
 const todoCounter = new TodoCounter(initialTodos, ".counter__text");
@@ -34,7 +32,7 @@ const addTodoPopupInstance = new PopupWithForm(
 
     const values = { ...inputValues, date, id: uuidv4() };
     const todoElement = generateTodo(values);
-    todosList.prepend(todoElement);
+    todoSection.addItem(todoElement);
     todoCounter.updateTotal(true);
     newTodoValidator.resetValidation();
     addTodoPopupInstance.close();
@@ -46,7 +44,7 @@ const todoSection = new Section({
   items: initialTodos,
   renderer: (item) => {
     const todoElement = generateTodo(item);
-    todosList.append(todoElement);
+    todoSection.addItem(todoElement);
   },
   containerSelector: ".todos__list",
 });
@@ -66,4 +64,3 @@ addTodoButton.addEventListener("click", () => {
 
 const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
 newTodoValidator.enableValidation();
-newTodoValidator.resetValidation();

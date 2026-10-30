@@ -1,6 +1,6 @@
 # Simple Todo App
 
-Give a brief description of the project here. Feel free to give it a different name.
+The Todo App is an app that takes organizing to another level. with programming designed to keep the process seamless and effortless.
 
 ## Functionality
 

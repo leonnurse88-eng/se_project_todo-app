@@ -1,10 +1,3 @@
-const showInputError = (formElement, inputElement, errorMessage, settings) => {
-  const errorElement = formElement.querySelector(errorElementId);
-  inputElement.classList.add(settings.inputErrorClass);
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add(settings.errorClass);
-};
-
 const hideInputError = (formElement, inputElement, settings) => {
   const errorElement = formElement.querySelector(errorElementId);
   inputElement.classList.remove(settings.inputErrorClass);
