@@ -1,10 +1,11 @@
 import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 import { initialTodos, validationConfig } from "../utils/contants.js";
-import todo from "../components/Todo.js";
+import Todo from "../components/Todo.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
-import PopupWithForm from "../components/PopupWithForm.js";
+import Popup from "../components/Popup.js";
 import TodoCounter from "../components/TodoCounter.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopup = document.querySelector("#add-todo-popup");
@@ -52,8 +53,8 @@ const todoSection = new Section({
 
 // The logic in this function should all be handled in the Todo class.
 const generateTodo = (data) => {
-  const Todo = new todo(data, "#todo-template", handleCheck, handleDelete);
-  const todoElement = Todo.getView();
+  const todoItem = new Todo(data, "#todo-template", handleCheck, handleDelete);
+  const todoElement = todoItem.getView();
   return todoElement;
 };
 
